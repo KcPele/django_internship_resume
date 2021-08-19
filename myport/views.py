@@ -35,7 +35,7 @@ def email_contact(request):
 				)
 		connection.send_messages([email3])
 		connection.close()
-		messages.info(request, 'Thanks, A response has been sent to your mail')
+		messages.success(request, 'Thanks, A response has been sent to your mail')
 		return redirect('index')
 
 	else:
@@ -52,7 +52,7 @@ def email_subscribe(request):
 
 		send_mail(subject, message_email, settings.EMAIL_HOST_USER, 
 			[subscribe_email], fail_silently=False,)
-		messages.info(request, 'Thank you for subscribing, Check your mail or spam box')
+		messages.add_message(request, messages.INFO, 'Thank you for subscribing, Check your mail or spam box')
 		return redirect('/')
 
 	else:
