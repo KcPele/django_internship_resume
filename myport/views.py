@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core import mail
+from django.core.mail import send_mail
 from django.conf import settings
 
 # Create your views here.
@@ -49,7 +50,7 @@ def email_subscribe(request):
 		subject = 'Assingment'
 		subscribe_email = request.POST['email_subscribe']
 
-		send_mail(subject, message_email, settings.EMAIL_HOST_PASSWORD, 
+		send_mail(subject, message_email, settings.EMAIL_HOST_USER, 
 			[subscribe_email], fail_silently=False,)
 		messages.info(request, 'Thank you for subscribing, Check your mail or spam box')
 		return redirect('/')
